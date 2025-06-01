@@ -1,34 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
-import { isLoggedIn, logout } from "../utils/auth";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
   return (
-    <nav className="p-4 bg-gray-800 text-white flex justify-between">
-      <div className="space-x-4">
-        {isLoggedIn() && (
-          <>
-            <Link to="/events">Events</Link>
-            <Link to="/create">Create Event</Link>
-          </>
-        )}
-      </div>
-      <div>
-        {isLoggedIn() ? (
-          <button onClick={handleLogout}>Logout</button>
-        ) : (
-          <>
-            <Link to="/login" className="mr-4">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
-      </div>
+    <nav style={{ background: '#222', color: 'white', padding: '10px' }}>
+      <Link to="/" style={{ margin: '0 10px', color: 'white' }}>Home</Link>
+      <Link to="/discover" style={{ margin: '0 10px', color: 'white' }}>Discover</Link>
+      <Link to="/playlists" style={{ margin: '0 10px', color: 'white' }}>My Playlists</Link>
+      <Link to="/login" style={{ margin: '0 10px', color: 'white' }}>Login</Link>
     </nav>
   );
 };
